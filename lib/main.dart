@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         }),
       );
 
-      if (response.statusCode == 200) { // Vérifie si la requête a réussi (code HTTP 200)
+      if (response.statusCode == 200 || response.statusCode == 201) { // Vérifie si la requête a réussi (code HTTP 200)
         print('Succès! Réponse du serveur: ${response.body}'); // Affiche la réponse du serveur dans la console
 
       } else {
@@ -65,6 +65,18 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  Widget customTextField({
+    required String labelText,
+    required Function(String) onChangedCallback,
+  }) {
+    return TextField(
+      decoration: InputDecoration(
+        labelText: labelText,
+        border: OutlineInputBorder(),
+      ),
+      onChanged: onChangedCallback,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,36 +92,25 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Input du nom
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Nom',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (newValue) {
+              customTextField(
+                labelText: 'Nom',
+                onChangedCallback: (newValue) {
                   nom = newValue;
                 },
               ),
               const SizedBox(height: 10),
-
               // Input du prénom
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Prénom',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (newValue) {
+              customTextField(
+                labelText: 'Prénom',
+                onChangedCallback: (newValue) {
                   prenom = newValue;
                 },
               ),
               const SizedBox(height: 10),
-
               // Input de l'email
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
-                onChanged: (newValue) {
+              customTextField(
+                labelText: 'Email',
+                onChangedCallback: (newValue) {
                   email = newValue;
                 },
               ),
