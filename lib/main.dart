@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   // Fonction pour envoyer les données
   void sendData() async {
-    final url = Uri.parse('http://10.0.2.2:8000/user/store'); // Convertit l'URL du point d'API en objet Uri (10.0.2.2 correspond à localhost depuis l'émulateur)
+    final url = Uri.parse('http://10.0.2.2:8000/api/user/store'); // Convertit l'URL du point d'API en objet Uri (10.0.2.2 correspond à localhost depuis l'émulateur)
 
     // Envoi des données
     try {
